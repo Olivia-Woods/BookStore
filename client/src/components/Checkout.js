@@ -10,7 +10,9 @@ import {
 import axios from "axios";
 import "./Checkout.css";
 
-const stripePromise = loadStripe("your_public_key_here");
+const stripePromise = loadStripe(
+  "pk_test_51QusBhKxx2cqYFfpNfZBECGwq11AN9oaXxUoi6Hc6OZWIz5nbRN8LRHDIJupWczqRZDaLKT6ZwHF34zECTRY1TFJ00LvQsn0hD"
+);
 
 const CheckoutForm = () => {
   const { cart } = useContext(CartContext);
@@ -19,7 +21,10 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const totalAmount = cart.reduce((total, book) => total + book.price, 0);
+  const totalAmount = cart.reduce(
+    (total, book) => total + book.price * (book.quantity || 1),
+    0
+  );
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,6 +48,22 @@ const CheckoutForm = () => {
         setMessage(result.error.message);
       } else {
         setMessage("Payment successful!");
+
+        // Send Order Details to Backend
+        await axios.post("http://localhost:5001/api/orders", {
+          books: cart.map((book) => ({
+            bookId: book._id,
+            title: book.title,
+            price: book.price,
+            image: book.image,
+            quantity: book.quantity || 1,
+          })),
+          totalAmount,
+          customerName: "Test User",
+          customerEmail: "test@example.com",
+        });
+
+        console.log("Order saved in MongoDB!");
       }
     } catch (error) {
       setMessage("Payment failed. Please try again.");
@@ -56,7 +77,12 @@ const CheckoutForm = () => {
       <h2>💳 Checkout</h2>
       <p>Total: ${totalAmount.toFixed(2)}</p>
       <form onSubmit={handleSubmit}>
-        <CardElement />
+        <CardElement
+          options={{
+            style: { base: { fontSize: "16px" } },
+            hidePostalCode: true, // ✅ This removes the postcode field
+          }}
+        />
         <button type="submit" disabled={loading || !stripe}>
           {loading ? "Processing..." : "Pay Now"}
         </button>

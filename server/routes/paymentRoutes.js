@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
     const { amount } = req.body;
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount * 100,
+      amount: Math.round(amount * 100),
       currency: "aud",
       payment_method_types: ["card"],
     });

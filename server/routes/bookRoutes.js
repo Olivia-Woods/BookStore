@@ -29,10 +29,10 @@ router.get("/:id", async (req, res) => {
 // @route   POST /api/books
 router.post("/", async (req, res) => {
   try {
-    const { title, author, genre, year, id } = req.body;
+    const { title, author, genre, year } = req.body;
 
     // Validate Required Fields
-    if (!title || !author || !genre || !year || !id) {
+    if (!title || !author || !genre || !year) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -41,7 +41,6 @@ router.post("/", async (req, res) => {
       author,
       genre,
       year,
-      id,
     });
 
     // Save Book MongoDB

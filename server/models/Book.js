@@ -5,7 +5,6 @@ const bookSchema = new mongoose.Schema({
   author: { type: String, required: true },
   genre: { type: String, required: true },
   year: { type: Number, required: true },
-  id: { type: String, required: true, unique: true },
 });
 
 const Book = mongoose.model("Book", bookSchema);

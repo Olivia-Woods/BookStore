@@ -45,3 +45,14 @@ export const deleteBook = async (id) => {
     console.error("Error deleting book:", error);
   }
 };
+
+// Get ALL Orders
+export const fetchOrders = async () => {
+  try {
+    const response = await axios.get("http://localhost:5001/api/orders");
+    return response.data || [];
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    return [];
+  }
+};

@@ -33,13 +33,17 @@ router.post("/", async (req, res) => {
   }
 });
 
-// @desc    Get ALL Orders
+// @desc    Get ALL Orders (Sorted by Latest)
 // @route   GET /api/orders
 router.get("/", async (req, res) => {
   try {
-    const orders = await Order.find().populate("books.bookId");
+    const orders = await Order.find()
+      .populate("books.bookId") // ✅ Get full book details
+      .sort({ createdAt: -1 }); // ✅ Sort by latest orders first
+
     res.json(orders);
   } catch (error) {
+    console.error("Error fetching orders:", error);
     res.status(500).json({ message: "Server error" });
   }
 });

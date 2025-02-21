@@ -19,6 +19,9 @@ app.use("/api/books", require("./routes/bookRoutes"));
 // Order Routes - All Routes Starting "/routes/orderRoutes"
 app.use("/api/orders", require("./routes/orderRoutes"));
 
+// Payment Routes
+app.use("/api/payments", require("./routes/paymentRoutes"));
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });

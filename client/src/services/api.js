@@ -7,10 +7,12 @@ const API = axios.create({
 // Get ALL Books
 export const fetchBooks = async () => {
   try {
-    const response = await API.get("/");
-    return response.data;
+    const response = await axios.get("http://localhost:5001/api/books");
+    console.log("Backend Response:", response.data);
+    return response.data || [];
   } catch (error) {
     console.error("Error fetching books:", error);
+    return [];
   }
 };
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { fetchOrders } from "../services/api";
-import "./OrderHistory.css";
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -14,8 +13,8 @@ const OrderHistory = () => {
   }, []);
 
   return (
-    <div className="order-history">
-      <h2>📦 Order History</h2>
+    <div className="order-history" style={{ paddingTop: "5rem" }}>
+      <h2>Order History</h2>
       {orders.length === 0 ? (
         <p>No past orders found.</p>
       ) : (
@@ -27,8 +26,6 @@ const OrderHistory = () => {
               <ul>
                 {order.books.map((book, index) => (
                   <li key={book.bookId || book._id || index}>
-                    {" "}
-                    {/* ✅ Ensures uniqueness */}
                     <img src={book.image} alt={book.title} width="50" />
                     <strong>{book.title}</strong> - {book.quantity} x $
                     {book.price}

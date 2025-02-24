@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import { fetchBooks } from "../services/api";
-import { CartContext } from "../context/CartContext";
+import { fetchBooks } from "../../services/api";
+import { CartContext } from "../../context/CartContext";
 import "./BookList.css";
 
 const BookList = () => {

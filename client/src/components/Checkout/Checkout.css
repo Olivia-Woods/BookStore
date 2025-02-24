@@ -1,0 +1,86 @@
+/* Checkout Page */
+.checkout {
+  padding-top: 100px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Checkout Header */
+.checkout h2 {
+  font-size: 2rem;
+  color: #4a4a4a;
+  margin-bottom: 15px;
+}
+
+/* Total Price */
+.checkout p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #4bbe9a;
+  margin-bottom: 20px;
+}
+
+/* Payment Form */
+.checkout form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Payment Input */
+.StripeElement {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 15px;
+}
+
+/* Pay Button */
+.checkout button {
+  width: 100%;
+  max-width: 400px;
+  background-color: #4bbe9a;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.checkout button:hover {
+  background-color: #2a9d7c;
+}
+
+/* Payment Status Message */
+.checkout p {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #2a9d7c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .checkout {
+    padding-top: 120px;
+    margin: 15px;
+  }
+
+  .StripeElement {
+    width: 90%;
+  }
+
+  .checkout button {
+    font-size: 1rem;
+  }
+}

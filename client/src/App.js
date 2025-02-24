@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/NavBar"; // ✅ Importing Navbar
-import BookList from "./components/BookList";
+import Navbar from "./components/NavBar/NavBar"; // ✅ Importing Navbar
+import BookList from "./components/BookList/BookList";
 import CartPage from "./pages/CartPage";
-import Checkout from "./components/Checkout";
+import Checkout from "./components/Checkout/Checkout";
 import OrderHistory from "./pages/OrderHistory";
 import { CartProvider } from "./context/CartContext";
 

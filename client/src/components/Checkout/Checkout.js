@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -47,7 +47,7 @@ const CheckoutForm = () => {
       if (result.error) {
         setMessage(result.error.message);
       } else {
-        setMessage("Payment successful!");
+        setMessage("Success! Happy Reading");
 
         // Send Order Details to Backend
         await axios.post("http://localhost:5001/api/orders", {
@@ -74,13 +74,13 @@ const CheckoutForm = () => {
 
   return (
     <div className="checkout">
-      <h2>💳 Checkout</h2>
+      <h2>Checkout</h2>
       <p>Total: ${totalAmount.toFixed(2)}</p>
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: { base: { fontSize: "16px" } },
-            hidePostalCode: true, // ✅ This removes the postcode field
+            hidePostalCode: true,
           }}
         />
         <button type="submit" disabled={loading || !stripe}>

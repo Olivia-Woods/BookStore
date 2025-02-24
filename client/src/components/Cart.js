@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-import "./Cart.css";
+import "./Cart.css"; // ✅ Correct path for CSS
 
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -11,7 +11,7 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <h2>🛒 Shopping Cart</h2>
+      <h2>Your New Books!</h2>
       {cart.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
@@ -22,9 +22,7 @@ const Cart = () => {
               <div>
                 <strong>{book.title}</strong> - ${book.price.toFixed(2)}
               </div>
-              <button onClick={() => removeFromCart(book._id)}>
-                Remove ❌
-              </button>
+              <button onClick={() => removeFromCart(book._id)}>Remove</button>
             </li>
           ))}
         </ul>
@@ -37,10 +35,12 @@ const Cart = () => {
         }).format(totalPrice)}
       </h3>
 
-      {/* ✅ Add Checkout Button Here */}
       {cart.length > 0 && (
-        <button onClick={() => navigate("/checkout")}>
-          Proceed to Checkout 💳
+        <button
+          className="checkout-button"
+          onClick={() => navigate("/checkout")}
+        >
+          Proceed to Checkout
         </button>
       )}
     </div>

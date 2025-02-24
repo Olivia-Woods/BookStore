@@ -1,52 +1,127 @@
-.book-list {
+/* General Styling */
+.bookstore {
   text-align: center;
+  font-family: "Poppins", sans-serif;
+  background-color: #e7dbfe;
+  padding: 20px;
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.hero {
+  background: none;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-image {
+  width: 60%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  .header-image {
+    width: 80%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-image {
+    width: 90%;
+    max-width: 280px;
+  }
+}
+
+/* Book Grid Layout */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
   padding: 20px;
 }
 
-.book-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+/* Responsive Book Grid */
+@media (max-width: 900px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+@media (max-width: 600px) {
+  .book-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Book Card */
 .book-card {
-  background: #fff;
+  background: white;
+  border-radius: 12px;
   padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 
 .book-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
 }
 
+/* Book Image */
 .book-card img {
   width: 100%;
-  height: 200px;
+  height: 400px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
+/* Book Title & Author */
+.book-card h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.author {
+  font-style: italic;
+  color: #777;
+}
+
+/* Price & Description */
 .price {
-  font-size: 18px;
+  font-size: 1.1rem;
+  color: #4bbe9a;
   font-weight: bold;
-  color: #ff4500;
 }
 
+.description {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Add to Cart Button */
 .add-to-cart {
-  background-color: #ff4500;
+  font-size: 0.9rem;
+  background-color: #4bbe9a;
   color: white;
   border: none;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .add-to-cart:hover {
-  background-color: #e03e00;
+  background-color: #2a9d7c;
+}
+
+/* No Books Message */
+.no-books {
+  font-size: 1.2rem;
+  color: #777;
 }

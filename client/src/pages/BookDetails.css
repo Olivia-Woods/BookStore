@@ -1,0 +1,63 @@
+.reviews {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviews h2 {
+  text-align: center;
+  color: #333;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reviews li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.reviews form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.reviews .rating-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviews .comment-submit {
+  display: flex;
+  gap: 10px;
+}
+
+.reviews input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.reviews button {
+  background-color: #c7c7ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.reviews button:hover {
+  background-color: #b3b3ff;
+}

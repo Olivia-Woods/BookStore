@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { fetchBooks } from "../../services/api";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 import "./BookList.css";
 
 const BookList = () => {
@@ -38,11 +39,16 @@ const BookList = () => {
           books.map((book) => (
             <div key={book._id} className="book-card">
               {/* Book Cover Image */}
-              <img src={book.image} alt={book.title} />
+              <Link to={`/book/${book._id}`}>
+                <img src={book.image} alt={book.title} className="book-image" />
+              </Link>
 
               {/* Book Title & Author */}
-              <h3>{book.title}</h3>
-              <p className="author">by {book.author}</p>
+              <h3>
+                <Link to={`/book/${book._id}`} className="book-title">
+                  {book.title}
+                </Link>
+              </h3>
 
               {/* Book Price */}
               <p className="price">${book.price.toFixed(2)}</p>

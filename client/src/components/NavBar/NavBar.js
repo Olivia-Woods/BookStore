@@ -18,6 +18,9 @@ const Navbar = () => {
             <Link to="/">Bookstore</Link>
           </li>
           <li>
+            <Link to="/bookclub">Book Club</Link>
+          </li>
+          <li>
             <Link to="/cart">Cart {totalItems > 0 && ` (${totalItems})`}</Link>
           </li>
           <li>

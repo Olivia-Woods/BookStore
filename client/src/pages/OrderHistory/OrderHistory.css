@@ -1,0 +1,98 @@
+/* Header */
+.order-history h2 {
+  margin-bottom: 40px;
+}
+
+/* Order History Container */
+.order-history {
+  max-width: 800px;
+  margin: 50px auto 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Order List */
+.order-history ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual Order */
+.order-history li {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+/* Order Total */
+.order-history h3 {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Order Date */
+.order-history p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Book List Inside Order */
+.order-history li ul {
+  padding-left: 0;
+}
+
+.order-history li ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Book Image */
+.order-history img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Book Title */
+.order-history strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Book Quantity & Price */
+.order-history li ul li span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .order-history {
+    margin: 80px auto 20px auto;
+    padding: 15px;
+  }
+
+  .order-history li {
+    padding: 12px;
+  }
+
+  .order-history h3 {
+    font-size: 1.1rem;
+  }
+
+  .order-history img {
+    width: 40px;
+    height: 40px;
+  }
+}

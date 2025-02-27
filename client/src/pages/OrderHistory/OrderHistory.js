@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { fetchOrders } from "../services/api";
+import { fetchOrders } from "../../services/api";
+import "./OrderHistory.css";
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);

@@ -56,7 +56,7 @@ const BookList = () => {
             </div>
           ))
         ) : (
-          <p className="no-books">No books available</p>
+          <p className="no-books">No Books Available</p>
         )}
       </div>
     </div>

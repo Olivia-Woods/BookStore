@@ -47,9 +47,9 @@ const CheckoutForm = () => {
       if (result.error) {
         setMessage(result.error.message);
       } else {
-        setMessage("Success! Happy Reading");
+        setMessage("Success! Happy Reading.");
 
-        // Send Order Details to Backend
+        // Save Order to Backend
         await axios.post("http://localhost:5001/api/orders", {
           books: cart.map((book) => ({
             bookId: book._id,
@@ -64,6 +64,11 @@ const CheckoutForm = () => {
         });
 
         console.log("Order saved in MongoDB!");
+
+        // Clear Cart
+        setTimeout(() => {
+          window.location.href = "/"; // Redirect to Homepage
+        }, 3000);
       }
     } catch (error) {
       setMessage("Payment failed. Please try again.");

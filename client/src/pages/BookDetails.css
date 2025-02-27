@@ -1,63 +1,205 @@
+/* Book Details Container */
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 120px auto 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Book Image */
+.book-image {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Book Info */
+.book-info {
+  text-align: center;
+}
+
+.book-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.author {
+  font-style: italic;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #4bbe9a;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.add-to-cart {
+  background-color: #4bbe9a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
+}
+
+.add-to-cart:hover {
+  background-color: #2a9d7c;
+}
+
+.back-to-store {
+  display: block;
+  text-align: center;
+  color: #b3b3ff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.back-to-store:hover {
+  color: #9292ff;
+}
+
+/* Reviews Section */
+.toggle-reviews {
+  cursor: pointer;
+  color: #b3b3ff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
 .reviews {
   background: white;
   border-radius: 10px;
-  padding: 15px;
-  margin-top: 20px;
-  text-align: left;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
-.reviews h2 {
-  text-align: center;
-  color: #333;
+.reviews p {
+  margin: 5px 0;
 }
 
 .reviews ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.reviews li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
+/* Review Submission Form */
 .reviews form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
 }
 
-.reviews .rating-input {
+/* Arrange rating and comment in a row */
+.reviews .input-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
 }
 
-.reviews .comment-submit {
-  display: flex;
-  gap: 10px;
+/* Label Styling */
+.reviews label {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
-.reviews input {
-  padding: 8px;
-  border-radius: 5px;
+/* Keep Rating Input Small */
+.reviews input[type="number"] {
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 80px;
+  text-align: center;
+  -moz-appearance: textfield;
 }
 
+.reviews input[type="number"]::-webkit-inner-spin-button,
+.reviews input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Comment Box Next to Rating */
+.reviews input[type="text"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+/* Center and Expand Submit Button */
 .reviews button {
   background-color: #c7c7ff;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
 }
 
 .reviews button:hover {
   background-color: #b3b3ff;
+}
+
+/* Ensure all input fields and button match in width */
+.reviews input[type="text"],
+.reviews button {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .reviews .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reviews input[type="number"],
+  .reviews input[type="text"] {
+    width: 100%;
+  }
 }

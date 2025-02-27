@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
-import { Link } from "react-router-dom";
 import "./BookDetails.css";
 
 const BookDetails = () => {
-  const { id } = useParams(); // Get book ID from URL
+  const { id } = useParams();
   const { addToCart } = useContext(CartContext);
   const [book, setBook] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
+  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -40,7 +40,7 @@ const BookDetails = () => {
     );
 
     if (response.ok) {
-      setReviews([...reviews, newReview]); // Update UI without refresh
+      setReviews([...reviews, newReview]);
       setRating("");
       setComment("");
     }
@@ -59,50 +59,61 @@ const BookDetails = () => {
         <button onClick={() => addToCart(book)} className="add-to-cart">
           Add to Cart 🛒
         </button>
-        <Link to="/">Back to Store</Link>
+        <Link to="/" className="back-to-store">
+          Return to Bookstore
+        </Link>
       </div>
 
-      {/* Reviews Section */}
-      <div className="reviews">
-        <h2>Reviews</h2>
-        {reviews.length === 0 ? (
-          <p>No reviews yet. Be the first bookworm to leave one! 📖</p>
-        ) : (
-          <ul>
-            {reviews.map((review, index) => (
-              <li key={index}>
-                <strong>{review.user}</strong> ⭐ {review.rating}/5
-                <p>{review.comment}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+      {/* Toggle Reviews Button */}
+      <p
+        className="toggle-reviews"
+        onClick={() => setShowReviews(!showReviews)}
+      >
+        {showReviews ? "Reviews ↑" : "Reviews ↓"}
+      </p>
 
-        {/* Submit Review */}
-        <form onSubmit={handleReviewSubmit}>
-          <div className="rating-input">
-            <label>Rating:</label>
-            <input
-              type="number"
-              min="1"
-              max="5"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-              required
-            />
-          </div>
-          <div className="comment-submit">
-            <input
-              type="text"
-              placeholder="Write a review..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              required
-            />
-            <button type="submit">Submit Review</button>
-          </div>
-        </form>
-      </div>
+      {/* Reviews Section (Only Shows if Toggled) */}
+      {showReviews && (
+        <div className="reviews visible">
+          {reviews.length === 0 ? (
+            <p>No reviews yet. Be the first!</p>
+          ) : (
+            <ul>
+              {reviews.map((review, index) => (
+                <li key={index}>
+                  <strong>{review.user}</strong> ✨ {review.rating}/5
+                  <p>{review.comment}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Submit Review Form */}
+          <form onSubmit={handleReviewSubmit}>
+            <div className="rating-input">
+              <input
+                type="number"
+                min="1"
+                max="5"
+                placeholder="/5"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+                required
+              />
+            </div>
+            <div className="comment-submit">
+              <input
+                type="text"
+                placeholder="Write a review..."
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                required
+              />
+              <button type="submit">Submit Review</button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

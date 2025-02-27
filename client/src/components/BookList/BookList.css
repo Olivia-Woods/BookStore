@@ -1,4 +1,4 @@
-/* General Styling */
+/* Bookstore Layout */
 .bookstore {
   text-align: center;
   font-family: "Poppins", sans-serif;
@@ -20,21 +20,6 @@
   height: auto;
   display: block;
   margin: 0 auto;
-}
-
-/* Responsive Header */
-@media (max-width: 768px) {
-  .header-image {
-    width: 80%;
-    max-width: 350px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-image {
-    width: 90%;
-    max-width: 280px;
-  }
 }
 
 /* Book Grid Layout */
@@ -137,100 +122,4 @@
 .no-books {
   font-size: 1.2rem;
   color: #777;
-}
-
-/* Reviews Section */
-.toggle-reviews {
-  cursor: pointer;
-  color: #b3b3ff;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 6px;
-}
-
-.reviews {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 2px;
-  margin-top: 10px;
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-.reviews p {
-  margin: 5px 0;
-  text-align: center;
-}
-
-/* Review Submission Form */
-.reviews form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-/* Inputs Row: Rating & Comment */
-.reviews .input-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.reviews label {
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-/* Keep Rating Input Small */
-.reviews input[type="number"] {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 0.9rem;
-  width: 80px;
-  text-align: center;
-}
-
-/* Make Comment Box Wider */
-.reviews input[type="text"] {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 0.9rem;
-  width: 50%;
-  flex-grow: 1;
-}
-
-/* Submit Button */
-.reviews button {
-  background-color: #c7c7ff;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease-in-out;
-  width: 40%;
-  margin-top: 5px;
-}
-
-.reviews button:hover {
-  background-color: #b3b3ff;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  .reviews .input-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .reviews input {
-    width: 100%;
-  }
 }

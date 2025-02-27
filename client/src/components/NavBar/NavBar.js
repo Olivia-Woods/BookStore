@@ -15,7 +15,7 @@ const Navbar = () => {
         </Link>
         <ul className="nav-links">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Bookstore</Link>
           </li>
           <li>
             <Link to="/cart">Cart {totalItems > 0 && ` (${totalItems})`}</Link>

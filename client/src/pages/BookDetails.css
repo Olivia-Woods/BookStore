@@ -72,6 +72,7 @@
   text-align: center;
   color: #b3b3ff;
   font-weight: bold;
+  font-size: 1.1rem;
   text-decoration: none;
   padding: 10px;
 }
@@ -86,7 +87,7 @@
   color: #b3b3ff;
   font-weight: bold;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 8px;
 }
 
@@ -119,7 +120,7 @@
   max-width: 500px;
 }
 
-/* Arrange rating and comment in a row */
+/* Arrange Rating & Comment */
 .reviews .input-row {
   display: flex;
   align-items: center;
@@ -164,7 +165,7 @@
   box-sizing: border-box;
 }
 
-/* Center and Expand Submit Button */
+/* Center & Expand Submit Button */
 .reviews button {
   background-color: #c7c7ff;
   color: white;
@@ -183,7 +184,7 @@
   background-color: #b3b3ff;
 }
 
-/* Ensure all input fields and button match in width */
+/* Review Input & Button Match in Width */
 .reviews input[type="text"],
 .reviews button {
   width: 100%;

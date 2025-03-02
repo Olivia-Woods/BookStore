@@ -25,9 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-/* ✅ REVIEW ROUTES HERE ✅ */
-
-// @desc    Get Reviews for a Book
+// @desc    Get REVIEWS for A Book
 // @route   GET /api/books/:id/reviews
 router.get("/:id/reviews", async (req, res) => {
   try {
@@ -40,7 +38,7 @@ router.get("/:id/reviews", async (req, res) => {
   }
 });
 
-// @desc    Add a Review to a Book
+// @desc    Add REVIEW to A Book
 // @route   POST /api/books/:id/reviews
 router.post("/:id/reviews", async (req, res) => {
   try {
@@ -48,7 +46,7 @@ router.post("/:id/reviews", async (req, res) => {
     const book = await Book.findById(req.params.id);
     if (!book) return res.status(404).json({ message: "Book not found" });
 
-    // Create review object
+    // Create Review Object
     const newReview = { user, rating, comment, createdAt: new Date() };
     book.reviews.push(newReview);
     await book.save();
@@ -58,8 +56,6 @@ router.post("/:id/reviews", async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
-
-/* ✅ CONTINUE WITH EXISTING ROUTES */
 
 // @desc    Add NEW Book
 // @route   POST /api/books
@@ -130,22 +126,22 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// @desc    Delete a Review from a Book
+// @desc    Delete A REVIEW From Book
 // @route   DELETE /api/books/:bookId/reviews/:reviewId
 router.delete("/:bookId/reviews/:reviewId", async (req, res) => {
   try {
     const { bookId, reviewId } = req.params;
 
-    // Find the book
+    // FIND Book
     const book = await Book.findById(bookId);
     if (!book) return res.status(404).json({ message: "Book not found" });
 
-    // Filter out the review to delete it
+    // Filter Out Review to DELETE
     book.reviews = book.reviews.filter(
       (review) => review._id.toString() !== reviewId
     );
 
-    // Save the updated book without the deleted review
+    // SAVE
     await book.save();
 
     res.json({ message: "Review deleted successfully", reviews: book.reviews });

@@ -38,8 +38,8 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const orders = await Order.find()
-      .populate("books.bookId") // ✅ Get full book details
-      .sort({ createdAt: -1 }); // ✅ Sort by latest orders first
+      .populate("books.bookId")
+      .sort({ createdAt: -1 });
 
     res.json(orders);
   } catch (error) {

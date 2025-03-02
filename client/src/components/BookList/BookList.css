@@ -1,5 +1,6 @@
 /* Bookstore Layout */
 .bookstore {
+  background-image: none !important;
   text-align: center;
   font-family: "Poppins", sans-serif;
   background-color: #f5eeff;

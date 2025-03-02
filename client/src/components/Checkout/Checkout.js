@@ -67,7 +67,7 @@ const CheckoutForm = () => {
 
         // Clear Cart
         setTimeout(() => {
-          window.location.href = "/"; // Redirect to Homepage
+          window.location.href = "/"; // Redirect Homepage
         }, 3000);
       }
     } catch (error) {

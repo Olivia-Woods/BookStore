@@ -75,7 +75,7 @@
   background-color: #2a9d7c;
 }
 
-/* 📱 Responsive Adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .cart {
     padding-top: 130px;

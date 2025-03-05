@@ -1,0 +1,95 @@
+/* Auth Page Container */
+.auth-container {
+  background: transparent;
+  padding: 20px;
+  max-width: 400px;
+  margin: 120px auto 40px auto;
+  text-align: center;
+}
+
+/* Form Box */
+.auth-container form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Input Fields */
+.auth-container input {
+  width: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Change Border Color on Click */
+.auth-container input:focus {
+  border: 2px solid #4bbe9a;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(75, 190, 154, 0.5);
+}
+
+/* Submit Button */
+.auth-container button {
+  background-color: #4bbe9a;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.auth-container button:hover {
+  background-color: #2a9d7c;
+}
+
+/* Toggle Login/Signup Link */
+.toggle-link {
+  margin-top: 10px;
+  color: #4bbe9a;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.toggle-link:hover {
+  text-decoration: underline;
+}
+
+/* Error Message */
+.auth-container p {
+  color: #d9534f;
+  font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .auth-container {
+    padding-top: 130px;
+    margin: 15px;
+  }
+
+  .auth-container form {
+    padding: 15px;
+  }
+
+  .auth-container input {
+    width: 100%;
+  }
+
+  .auth-container button {
+    font-size: 1rem;
+  }
+}

@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
 import "./NavBar.css";
 
 const Navbar = () => {
   const { cart } = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
+
   const totalItems = cart.reduce((acc, book) => acc + (book.quantity || 1), 0);
 
   return (
@@ -26,6 +29,21 @@ const Navbar = () => {
           <li>
             <Link to="/orders">Order History</Link>
           </li>
+
+          {user ? (
+            <>
+              <li className="user-info">Hi, {user.username}</li>
+              <li>
+                <button className="logout-button" onClick={logout}>
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link to="/auth">Log In / Sign Up</Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

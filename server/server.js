@@ -18,11 +18,14 @@ connectDB();
 // Registers bookRoutes.js File Middleware - All Routes Starting "/api/books"
 app.use("/api/books", require("./routes/bookRoutes"));
 
-// Order Routes - All Routes Starting "/routes/orderRoutes"
+// Order Routes - All Routes Starting "/api/orders"
 app.use("/api/orders", require("./routes/orderRoutes"));
 
-// Payment Routes
+// Payment Routes - All Routes Starting "/api/payments"
 app.use("/api/payments", require("./routes/paymentRoutes"));
+
+// Authentication Routes - All Routes Starting "/api/auth"
+app.use("/api/auth", require("./routes/authRoutes"));
 
 // WebSocket Setup for Real-Time Chat
 const io = new Server(server, {
@@ -46,6 +49,7 @@ io.on("connection", (socket) => {
   });
 });
 
+// Root Route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });

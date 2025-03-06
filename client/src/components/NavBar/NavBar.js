@@ -26,13 +26,15 @@ const Navbar = () => {
           <li>
             <Link to="/cart">Cart {totalItems > 0 && ` (${totalItems})`}</Link>
           </li>
-          <li>
-            <Link to="/orders">Order History</Link>
-          </li>
 
+          {/* Logged In: Show Order History and Logout */}
           {user ? (
             <>
               <li className="user-info">Hi, {user.username}</li>
+              <li>
+                <Link to="/orders">Order History</Link>{" "}
+                {/* Order History Link */}
+              </li>
               <li>
                 <button className="logout-button" onClick={logout}>
                   Logout
@@ -40,8 +42,9 @@ const Navbar = () => {
               </li>
             </>
           ) : (
+            // Logged Out: NavBar Won't Show Login/Auth Options
             <li>
-              <Link to="/auth">Log In / Sign Up</Link>
+              <Link to="/auth">Account</Link> {/* Link to AuthPage */}
             </li>
           )}
         </ul>

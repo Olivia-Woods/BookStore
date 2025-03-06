@@ -16,8 +16,8 @@ const Cart = () => {
         <p>Your cart is empty</p>
       ) : (
         <ul>
-          {cart.map((book) => (
-            <li key={book._id}>
+          {cart.map((book, index) => (
+            <li key={book._id || `cart-book-${index}`}>
               <img src={book.image} alt={book.title} />
               <div>
                 <strong>{book.title}</strong> - ${book.price.toFixed(2)}

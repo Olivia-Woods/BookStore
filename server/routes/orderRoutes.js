@@ -3,7 +3,7 @@ const router = express.Router();
 const Order = require("../models/Order");
 const authMiddleware = require("../middleware/authMiddleware");
 
-// ✅ Get Orders for Logged-In User (Requires Authentication)
+// Get Orders for Logged-In User (Requires Authentication)
 router.get("/", authMiddleware, async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.user.userId })
@@ -17,14 +17,13 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
-// ❌ Old: Removed `POST /api/orders` (orders should only be stored after payment)
-// ✅ New: Store Order After Payment is Successful
+// Store Order After Payment is Successful
 router.post("/confirm", async (req, res) => {
   try {
     const { paymentIntentId, userId, books, totalAmount } = req.body;
 
     console.log(
-      "💾 Storing Order for Payment Intent:",
+      "Storing Order for Payment Intent:",
       paymentIntentId,
       "User:",
       userId || "Guest"
@@ -34,9 +33,9 @@ router.post("/confirm", async (req, res) => {
       return res.status(400).json({ message: "Invalid order data" });
     }
 
-    // ✅ Create Order
+    // Create Order
     const order = new Order({
-      userId: userId || null, // Guests get userId: null
+      userId: userId || null,
       books,
       totalAmount,
       paymentIntentId,
@@ -44,11 +43,11 @@ router.post("/confirm", async (req, res) => {
     });
 
     await order.save();
-    console.log("✅ Order stored in database:", order);
+    console.log("Order stored in database:", order);
 
     res.json({ message: "Order stored successfully", order });
   } catch (error) {
-    console.error("❌ Error storing order:", error);
+    console.error("❗️Error storing order:", error);
     res
       .status(500)
       .json({ message: "Failed to store order", error: error.message });

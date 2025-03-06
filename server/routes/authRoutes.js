@@ -4,14 +4,14 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const router = express.Router();
 
-const SECRET_KEY = process.env.JWT_SECRET; // Load Secret Key from .env
+const SECRET_KEY = process.env.JWT_SECRET; // Load Secret Key: .env
 
-// ✅ User Registration
+// User Registration
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Check if user exists
+    // Check User Exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already in use." });
@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// ✅ User Login
+// User Login
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ✅ Get User Info (For Order History or Chat)
+// Get User Info (For Order History or Chat)
 router.get("/user", async (req, res) => {
   try {
     const token = req.headers.authorization;

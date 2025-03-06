@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import "./BookList.css";
 
 const BookList = () => {
-  const [books, setBooks] = useState([]); // Store Book Data
-  const { addToCart } = useContext(CartContext); // Access Cart Context
+  const [books, setBooks] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   // Fetch Books from API
   useEffect(() => {

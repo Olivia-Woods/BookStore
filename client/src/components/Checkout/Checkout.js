@@ -34,7 +34,7 @@ const CheckoutForm = () => {
     setMessage("");
 
     if (!stripe || !elements) {
-      console.error("❌ ERROR: Stripe.js has not loaded yet.");
+      console.error("❗️ERROR: Stripe.js has not loaded yet.");
       setMessage("Payment system not ready. Please refresh and try again.");
       setLoading(false);
       return;
@@ -47,7 +47,7 @@ const CheckoutForm = () => {
         : null;
 
       console.log(
-        "🚀 Checkout Started | User:",
+        "Checkout Started | User:",
         userId || "Guest",
         "| Total Amount:",
         totalAmount
@@ -59,7 +59,7 @@ const CheckoutForm = () => {
         return;
       }
 
-      // ✅ Process Payment
+      // Process Payment
       const paymentResponse = await axios.post(
         "http://localhost:5001/api/payments",
         {
@@ -69,11 +69,11 @@ const CheckoutForm = () => {
       );
 
       const clientSecret = paymentResponse.data.clientSecret;
-      console.log("💳 Received clientSecret:", clientSecret);
+      console.log("Payment Received clientSecret:", clientSecret);
 
       if (!clientSecret) {
         console.error(
-          "❌ ERROR: No clientSecret received! Payment request failed."
+          "❗️ERROR: No clientSecret received! Payment request failed."
         );
         setMessage("Payment could not be processed. Please try again.");
         setLoading(false);
@@ -84,22 +84,22 @@ const CheckoutForm = () => {
         payment_method: { card: elements.getElement(CardElement) },
       });
 
-      console.log("🟢 Full Stripe Response:", JSON.stringify(result, null, 2)); // Logs full response
+      console.log("Full Stripe Response:", JSON.stringify(result, null, 2));
 
       if (result.error) {
-        console.error("❌ ERROR: Stripe Payment Failed:", result.error.message);
+        console.error("❗️ERROR: Stripe Payment Failed:", result.error.message);
         setMessage(result.error.message);
         setLoading(false);
         return;
       }
 
-      // ✅ Check if Stripe marked the payment as "succeeded"
+      // Check Stripe Marked Payment as "SUCCEEDED"
       if (
         !result.paymentIntent ||
         result.paymentIntent.status !== "succeeded"
       ) {
         console.error(
-          "❌ ERROR: Payment was not marked as 'succeeded'!",
+          "❗️ERROR: Payment was not marked as 'succeeded'!",
           result.paymentIntent
         );
         setMessage("Payment could not be completed. Please try again.");
@@ -107,12 +107,12 @@ const CheckoutForm = () => {
         return;
       }
 
-      console.log("✅ Payment Succeeded! PaymentIntent:", result.paymentIntent);
+      console.log("Payment Succeeded! PaymentIntent:", result.paymentIntent);
 
-      // ✅ Check if Payment is Successful
+      // Check Payment: Successful
       if (result.paymentIntent.status !== "succeeded") {
         console.error(
-          "❌ ERROR: Payment was not successful!",
+          "❗️ERROR: Payment was not successful!",
           result.paymentIntent
         );
         setMessage("Payment could not be completed. Please try again.");
@@ -120,11 +120,11 @@ const CheckoutForm = () => {
         return;
       }
 
-      console.log("✅ Payment Succeeded! PaymentIntent:", result.paymentIntent);
+      console.log("Payment Succeeded! PaymentIntent:", result.paymentIntent);
 
       setMessage("Success! Happy Reading.");
 
-      // ✅ Store Order After Successful Payment
+      // Store Order After Successful Payment
       const orderResponse = await axios.post(
         "http://localhost:5001/api/orders/confirm",
         {
@@ -144,17 +144,17 @@ const CheckoutForm = () => {
         }
       );
 
-      console.log("✅ Order Successfully Stored:", orderResponse.data);
+      console.log("Order Successfully Stored:", orderResponse.data);
 
-      // ✅ Clear Cart After Successful Purchase
+      // Clear Cart After Successful Purchase
       clearCart();
 
-      // ✅ Redirect to Homepage
+      // Redirect to Homepage
       setTimeout(() => {
         navigate("/");
       }, 3000);
     } catch (error) {
-      console.error("❌ Payment Error:", error.response?.data || error.message);
+      console.error("❗️Payment Error:", error.response?.data || error.message);
       setMessage("Payment failed. Please try again.");
     }
 

@@ -13,9 +13,8 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((book) => book._id !== bookId));
   };
 
-  // ✅ Fix: Add `clearCart` function
   const clearCart = () => {
-    setCart([]); // Clears the cart after purchase
+    setCart([]);
   };
 
   return (

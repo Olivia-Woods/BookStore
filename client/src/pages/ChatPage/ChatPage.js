@@ -10,18 +10,18 @@ const ChatPage = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    // Ask for a display name when the user joins the chat
+    // Ask for a display name when the user joins the chat.
     let userName =
       localStorage.getItem("chatName") || prompt("Enter your display name:");
 
     if (!userName || userName.trim() === "") {
-      userName = "Guest"; // Default to "Guest" if left blank
+      userName = "Guest"; // Default to "Guest" if left blank.
     }
 
     setName(userName);
-    localStorage.setItem("chatName", userName); // Save name in local storage
+    localStorage.setItem("chatName", userName);
 
-    // Notify server of new user
+    // Notify Server of New User
     socket.emit("joinChat", { name: userName });
 
     socket.on("receiveMessage", (msg) => {

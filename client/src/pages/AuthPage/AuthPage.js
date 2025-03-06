@@ -80,7 +80,7 @@ const AuthPage = () => {
       <p
         onClick={() => setIsLogin(!isLogin)}
         className="toggle-link"
-        style={{ color: isLogin ? "#777" : "#777" }} // Change colors as needed
+        style={{ color: isLogin ? "#777" : "#777" }}
       >
         {isLogin ? "New? Sign Up Here!" : "Log In Please!"}
       </p>

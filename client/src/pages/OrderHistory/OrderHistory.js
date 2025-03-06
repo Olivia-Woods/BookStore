@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { fetchOrders } from "../../services/api";
+import { AuthContext } from "../../context/AuthContext";
 import "./OrderHistory.css";
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    const getOrders = async () => {
-      const data = await fetchOrders();
-      setOrders(data);
+    const loadOrders = async () => {
+      const token = localStorage.getItem("token");
+      if (user && token) {
+        const data = await fetchOrders(token);
+        setOrders(data);
+      }
     };
-    getOrders();
-  }, []);
+    loadOrders();
+  }, [user]);
 
   return (
-    <div className="order-history" style={{ paddingTop: "5rem" }}>
+    <div className="order-history">
       <h2>Order History</h2>
       {orders.length === 0 ? (
         <p>No past orders found.</p>

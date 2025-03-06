@@ -13,8 +13,15 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((book) => book._id !== bookId));
   };
 
+  // ✅ Fix: Add `clearCart` function
+  const clearCart = () => {
+    setCart([]); // Clears the cart after purchase
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );

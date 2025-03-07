@@ -20,7 +20,15 @@ const OrderHistory = () => {
 
   return (
     <div className="order-history">
-      <h2>Order History</h2>
+      <h2
+        style={{
+          color: "black",
+          fontSize: "xx-large",
+          margin: "70px auto 40px auto",
+        }}
+      >
+        Order History
+      </h2>
       {orders.length === 0 ? (
         <p>No past orders found.</p>
       ) : (

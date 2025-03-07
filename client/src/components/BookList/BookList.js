@@ -46,12 +46,12 @@ const BookList = () => {
 
               {/* Shortened Book Description */}
               <p className="description">
-                {book.description.substring(0, 100)}...
+                {book.description.substring(0, 80)}...
               </p>
 
               {/* Add to Cart Button */}
               <button onClick={() => addToCart(book)} className="add-to-cart">
-                Add to Cart 🛒
+                Add to Cart
               </button>
             </div>
           ))

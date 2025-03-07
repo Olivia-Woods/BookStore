@@ -11,9 +11,17 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <h2>Your New Books!</h2>
+      <h2
+        style={{
+          color: "black",
+          fontSize: "xx-large",
+          margin: "auto",
+        }}
+      >
+        Your New Books!
+      </h2>
       {cart.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p>Your cart is empty ☹</p>
       ) : (
         <ul>
           {cart.map((book, index) => (

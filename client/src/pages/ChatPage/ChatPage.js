@@ -43,7 +43,6 @@ const ChatPage = () => {
   return (
     <div className="chat-container">
       <h2>Book Club</h2>
-      <h3>Remember to be kind!</h3>
       <p>
         Welcome, <strong>{name}</strong>!
       </p>

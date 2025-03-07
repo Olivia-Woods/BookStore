@@ -3,7 +3,7 @@
   background-image: none !important;
   text-align: center;
   font-family: "Poppins", sans-serif;
-  background-color: #f5eeff;
+  background-color: #f5eeff !important;
   padding: 20px;
   padding-top: 80px;
 }
@@ -52,6 +52,11 @@
   padding: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  /*
+  border-color: rgba(179, 179, 255, 0.4); rgba(75, 190, 154, 0.8); 
+  border-style: solid;
+  border-width: 4px;
+  */
 }
 
 .book-card:hover {
@@ -123,4 +128,14 @@
 .no-books {
   font-size: 1.2rem;
   color: #777;
+}
+
+.footer {
+  background-color: #f5eeff !important; /* Ensures it matches the page background */
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  width: 100%;
+  margin-top: auto;
+  border: none; /* Removes any unwanted borders */
 }

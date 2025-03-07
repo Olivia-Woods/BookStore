@@ -45,7 +45,15 @@ const AuthPage = () => {
 
   return (
     <div className="auth-container">
-      <h2>{isLogin ? "Log In" : "Sign Up"}</h2>
+      <h2
+        style={{
+          color: "black",
+          fontSize: "xx-large",
+          margin: "70px auto 40px auto",
+        }}
+      >
+        {isLogin ? "Log In" : "Sign Up"}
+      </h2>
       <form onSubmit={handleSubmit}>
         {!isLogin && (
           <input

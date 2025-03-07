@@ -1,3 +1,13 @@
+h2 {
+  color: white;
+  font-size: xx-large;
+  margin: auto;
+}
+
+p {
+  color: #000000;
+}
+
 body {
   background: url("../../../public/a.png") no-repeat center bottom;
   background-size: cover;
@@ -5,23 +15,18 @@ body {
   height: 100vh;
 }
 
-h3 {
-  font-size: 1rem;
-  font-weight: normal;
-  text-align: center;
-  color: #777;
-  margin-top: -10px;
-  font-style: italic;
-}
-
 .chat-container {
   max-width: 600px;
-  margin: 120px auto;
+  margin: 150px auto;
   padding: 20px;
-  background: white;
+  border-color: rgba(75, 190, 154, 0.8);
+  border-style: solid;
+  border-width: 4px;
+  background: rgba(75, 190, 154, 0.6);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .messages {
@@ -37,7 +42,7 @@ h3 {
 .message {
   padding: 8px;
   border-radius: 5px;
-  background: #b3b3ff;
+  background: linear-gradient(to right, #b3b3ff, #4bbe9a);
   color: white;
   margin-bottom: 5px;
   text-align: left;

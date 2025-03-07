@@ -66,7 +66,7 @@ git clone https://github.com/your-username/chapter-one-bookstore.git
 cd chapter-one-bookstore
 ```
 
-### 2️⃣ Install Dependencies
+### 2. Install Dependencies
 
 #### Frontend
 
@@ -82,7 +82,7 @@ cd server
 npm install
 ```
 
-### 3️⃣ Set Up Environment Variables
+### 3. Set Up Environment Variables
 
 Create a **.env** file in the `server/` directory and add:
 
@@ -92,7 +92,7 @@ JWT_SECRET=your_strong_secret_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
 
-### 4️⃣ Start the Application
+### 4. Start the Application
 
 #### Run the Backend
 

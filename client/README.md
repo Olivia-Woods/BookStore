@@ -2,36 +2,36 @@
 
 ## Project Overview
 
-**Chapter One** is a modern online bookstore that allows users to browse and purchase books while engaging in a **real-time "BookClub" chat**. The platform provides both **guest and authenticated user experiences**, enabling users to check out as guests or create an account for added features like order history and personalized chat names.
+**Chapter One** is a modern online bookstore that allows users to browse and purchase books while engaging in a **real-time "BookClub" chat**. The platform provides both **guest and authenticated user experiences**, enabling users to check out as guests or create an account for added features like order history and personalised chat names.
 
-## ✨ Features
+## Features
 
-### 🛍️ **Bookstore Functionality**
+### **Bookstore Functionality**
 
-- Browse and search for books.
+- Browse for books.
 - View detailed book descriptions and reviews.
 - Add books to a cart and proceed to checkout.
 - Secure payment processing with **Stripe**.
 
-### 👤 **User Authentication**
+### **User Authentication**
 
-- Sign up and log in using email and password.
+- Sign up and log in using username, email and password.
 - JWT-based authentication for secure user sessions.
 - **Order history** for logged-in users.
 
-### 📚 **Book Reviews**
+### **Book Reviews**
 
 - Users can leave reviews for books.
 - Guests can leave anonymous reviews.
 - Reviews appear on the book's details page.
 
-### 💬 **BookClub Chat (Real-Time Chat)**
+### **BookClub Chat (Real-Time Chat)**
 
 - **Logged-in users**: Display their username in chat.
 - **Guests**: Choose a temporary display name before joining.
 - **Socket.io** used for live chat functionality.
 
-### 🛒 **Checkout & Order History**
+### **Checkout & Order History**
 
 - **Guest checkout**: Users can purchase without logging in.
 - **Logged-in users**: Orders are linked to their account.
@@ -39,7 +39,7 @@
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -57,16 +57,16 @@
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 1️⃣ Clone the Repository
+### 1️ Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/chapter-one-bookstore.git
 cd chapter-one-bookstore
 ```
 
-### 2️⃣ Install Dependencies
+### 2️ Install Dependencies
 
 #### Frontend
 
@@ -82,7 +82,7 @@ cd server
 npm install
 ```
 
-### 3️⃣ Set Up Environment Variables
+### 3️ Set Up Environment Variables
 
 Create a **.env** file in the `server/` directory and add:
 
@@ -92,7 +92,7 @@ JWT_SECRET=your_strong_secret_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
 
-### 4️⃣ Start the Application
+### 4️ Start the Application
 
 #### Run the Backend
 
@@ -110,23 +110,29 @@ npm start
 
 ---
 
-## 📌 API Endpoints
+## API Endpoints
 
 ### **Authentication** (`/api/auth`)
 
-- **POST** `/register` - User signup.
+- **POST** `/register` - Register a new user.
 - **POST** `/login` - User login.
 - **GET** `/user` - Retrieve logged-in user details.
 
 ### **Books** (`/api/books`)
 
 - **GET** `/` - Fetch all books.
+- **GET** `/:id` - Get a single book by ID.
+- **GET** `/:id/reviews` - Get all reviews for a book.
+- **POST** `/:id/reviews` - Add a review to a book.
+- **DELETE** `/:bookId/reviews/:reviewId` - Delete a specific review from a book.
 - **POST** `/` - Add a new book (Admin feature).
+- **PUT** `/:id` - Update book details (Admin feature).
+- **DELETE** `/:id` - Remove a book (Admin feature).
 
 ### **Orders** (`/api/orders`)
 
-- **POST** `/` - Place an order (Guest & Logged-in users).
-- **GET** `/` - Get order history (Logged-in users only).
+- **POST** `/confirm` - Store order after successful payment.
+- **GET** `/` - Get order history for logged-in users.
 
 ### **Payments** (`/api/payments`)
 
@@ -134,21 +140,22 @@ npm start
 
 ### **Chat** (WebSockets - `Socket.io`)
 
-- **sendMessage** - Broadcasts messages to all users.
-- **authenticate** - Verifies and sets user identity in chat.
+- **sendMessage** - Broadcast messages to all users.
+- **authenticate** - Verify and set user identity in chat.
 
 ---
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
-- **Wishlist feature** for users to save books for later.
-- **Admin panel** to manage book listings and orders.
-- **More payment options** like PayPal.
-- **User profiles with avatars.**
+- **Genre Filter** – Allow users to filter books by genre for easier browsing.
+- **Admin Panel** – Provide tools for managing book listings, orders, and user accounts.
+- **User Profiles with Loyalty Status** – Introduce a loyalty program to reward frequent buyers.
+- **Group Chats** – Enable certain users to create and join group discussions around books.
+- **More Payment Options** – Support additional payment methods such as PayPal.
 
 ---
 
-## 💡 Contributing
+## Contributing
 
 Pull requests are welcome! If you'd like to contribute:
 
@@ -160,10 +167,6 @@ Pull requests are welcome! If you'd like to contribute:
 
 ---
 
-## 🔗 Contact
+## Contact
 
-**Developer:** Olivia Woods  
-📧 Email: [your-email@example.com](mailto:your-email@example.com)  
-💼 LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-
-Happy coding & happy reading! 📖✨
+**Developer:** Olivia Woods

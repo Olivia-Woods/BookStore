@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
 
     console.log("Registering user:", { username, email, password });
 
-    // Check If User Already Exists
+    // Check if User Exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already in use." });
@@ -49,14 +49,14 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "User not found." });
     }
 
-    // Debugging: Print stored hashed password
+    // Debugging: Print Stored Hashed Password
     console.log("Stored hashed password:", user.password);
 
     // Compare Entered Password with Hashed Password
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      console.log("🔴 Password does not match for email:", email);
+      console.log("Password does not match for email:", email);
       return res.status(400).json({ message: "Invalid password." });
     }
 

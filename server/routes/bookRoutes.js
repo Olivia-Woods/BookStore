@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Book = require("../models/Book");
+const authMiddleware = require("../middleware/authMiddleware");
 
 // @desc    Get ALL Books
 // @route   GET /api/books
@@ -38,22 +39,30 @@ router.get("/:id/reviews", async (req, res) => {
   }
 });
 
-// @desc    Add REVIEW to A Book
+// @desc    Add REVIEW to A Book (with authentication)
 // @route   POST /api/books/:id/reviews
 router.post("/:id/reviews", async (req, res) => {
   try {
-    const { user, rating, comment } = req.body;
+    const { rating, comment, user } = req.body;
     const book = await Book.findById(req.params.id);
+
     if (!book) return res.status(404).json({ message: "Book not found" });
 
-    // Create Review Object
-    const newReview = { user, rating, comment, createdAt: new Date() };
+    const newReview = {
+      user: user || "Guest Reader",
+      rating,
+      comment,
+    };
+
     book.reviews.push(newReview);
     await book.save();
 
-    res.status(201).json(book.reviews);
+    res.status(201).json({
+      message: "Review added successfully",
+      reviews: book.reviews,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({ message: "Server error" });
   }
 });
 
@@ -62,8 +71,6 @@ router.post("/:id/reviews", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { title, author, genre, year, price, image, description } = req.body;
-
-    // Validate Required Fields
     if (
       !title ||
       !author ||
@@ -85,12 +92,9 @@ router.post("/", async (req, res) => {
       image,
       description,
     });
-
-    // Save Book MongoDB
     await newBook.save();
     res.status(201).json(newBook);
   } catch (error) {
-    console.error("POST /api/books Error:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
@@ -102,10 +106,8 @@ router.put("/:id", async (req, res) => {
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-
     if (!updatedBook)
       return res.status(404).json({ message: "Book not found" });
-
     res.json(updatedBook);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -119,7 +121,6 @@ router.delete("/:id", async (req, res) => {
     const deletedBook = await Book.findByIdAndDelete(req.params.id);
     if (!deletedBook)
       return res.status(404).json({ message: "Book not found" });
-
     res.json({ message: "Book deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -131,17 +132,12 @@ router.delete("/:id", async (req, res) => {
 router.delete("/:bookId/reviews/:reviewId", async (req, res) => {
   try {
     const { bookId, reviewId } = req.params;
-
-    // FIND Book
     const book = await Book.findById(bookId);
     if (!book) return res.status(404).json({ message: "Book not found" });
 
-    // Filter Out Review to DELETE
     book.reviews = book.reviews.filter(
       (review) => review._id.toString() !== reviewId
     );
-
-    // SAVE
     await book.save();
 
     res.json({ message: "Review deleted successfully", reviews: book.reviews });

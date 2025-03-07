@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
 import "./BookDetails.css";
 
 const BookDetails = () => {
   const { id } = useParams();
   const { addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
   const [book, setBook] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState("");
@@ -25,7 +27,7 @@ const BookDetails = () => {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     const newReview = {
-      user: "Guest Reader",
+      user: user ? user.username : "Guest Reader",
       rating: parseInt(rating),
       comment,
     };

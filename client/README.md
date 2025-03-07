@@ -1,70 +1,169 @@
-# Getting Started with Create React App
+# Online Bookstore: "Chapter One"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+**Chapter One** is a modern online bookstore that allows users to browse and purchase books while engaging in a **real-time "BookClub" chat**. The platform provides both **guest and authenticated user experiences**, enabling users to check out as guests or create an account for added features like order history and personalized chat names.
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+### 🛍️ **Bookstore Functionality**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Browse and search for books.
+- View detailed book descriptions and reviews.
+- Add books to a cart and proceed to checkout.
+- Secure payment processing with **Stripe**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 👤 **User Authentication**
 
-### `npm test`
+- Sign up and log in using email and password.
+- JWT-based authentication for secure user sessions.
+- **Order history** for logged-in users.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 📚 **Book Reviews**
 
-### `npm run build`
+- Users can leave reviews for books.
+- Guests can leave anonymous reviews.
+- Reviews appear on the book's details page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 💬 **BookClub Chat (Real-Time Chat)**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Logged-in users**: Display their username in chat.
+- **Guests**: Choose a temporary display name before joining.
+- **Socket.io** used for live chat functionality.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🛒 **Checkout & Order History**
 
-### `npm run eject`
+- **Guest checkout**: Users can purchase without logging in.
+- **Logged-in users**: Orders are linked to their account.
+- Orders are saved in MongoDB and retrieved for user profiles.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🏗️ Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Frontend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React.js** - Component-based UI design.
+- **React Router** - For seamless page navigation.
+- **CSS Modules** - Responsive styling.
 
-## Learn More
+### Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Node.js & Express.js** - Server-side logic.
+- **MongoDB & Mongoose** - Database for books, users, and orders.
+- **Socket.io** - Real-time chat functionality.
+- **JWT Authentication** - Secure login sessions.
+- **Stripe API** - Secure payment processing.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🚀 Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1️⃣ Clone the Repository
 
-### Analyzing the Bundle Size
+```bash
+git clone https://github.com/your-username/chapter-one-bookstore.git
+cd chapter-one-bookstore
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2️⃣ Install Dependencies
 
-### Making a Progressive Web App
+#### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+cd client
+npm install
+```
 
-### Advanced Configuration
+#### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+cd server
+npm install
+```
 
-### Deployment
+### 3️⃣ Set Up Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Create a **.env** file in the `server/` directory and add:
 
-### `npm run build` fails to minify
+```plaintext
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_strong_secret_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 4️⃣ Start the Application
+
+#### Run the Backend
+
+```bash
+cd server
+npm start
+```
+
+#### Run the Frontend
+
+```bash
+cd client
+npm start
+```
+
+---
+
+## 📌 API Endpoints
+
+### **Authentication** (`/api/auth`)
+
+- **POST** `/register` - User signup.
+- **POST** `/login` - User login.
+- **GET** `/user` - Retrieve logged-in user details.
+
+### **Books** (`/api/books`)
+
+- **GET** `/` - Fetch all books.
+- **POST** `/` - Add a new book (Admin feature).
+
+### **Orders** (`/api/orders`)
+
+- **POST** `/` - Place an order (Guest & Logged-in users).
+- **GET** `/` - Get order history (Logged-in users only).
+
+### **Payments** (`/api/payments`)
+
+- **POST** `/` - Process Stripe payments.
+
+### **Chat** (WebSockets - `Socket.io`)
+
+- **sendMessage** - Broadcasts messages to all users.
+- **authenticate** - Verifies and sets user identity in chat.
+
+---
+
+## 🎯 Future Enhancements
+
+- **Wishlist feature** for users to save books for later.
+- **Admin panel** to manage book listings and orders.
+- **More payment options** like PayPal.
+- **User profiles with avatars.**
+
+---
+
+## 💡 Contributing
+
+Pull requests are welcome! If you'd like to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`feature-new`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-new`).
+5. Open a pull request!
+
+---
+
+## 🔗 Contact
+
+**Developer:** Olivia Woods  
+📧 Email: [your-email@example.com](mailto:your-email@example.com)  
+💼 LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+
+Happy coding & happy reading! 📖✨

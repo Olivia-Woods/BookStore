@@ -1,41 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { io } from "socket.io-client";
+import { AuthContext } from "../../context/AuthContext";
 import "./ChatPage.css";
 
 const socket = io("http://localhost:5001");
 
 const ChatPage = () => {
+  const { user } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    // Ask for a display name when the user joins the chat.
-    let userName =
-      localStorage.getItem("chatName") || prompt("Enter your display name:");
+    let userName = user ? user.username : localStorage.getItem("chatName");
 
-    if (!userName || userName.trim() === "") {
-      userName = "Guest"; // Default to "Guest" if left blank.
+    if (!userName) {
+      userName = prompt("Enter your display name:") || "Guest";
+      localStorage.setItem("chatName", userName);
     }
 
     setName(userName);
-    localStorage.setItem("chatName", userName);
 
-    // Notify Server of New User
-    socket.emit("joinChat", { name: userName });
+    // **Send Token to Server if Logged In**
+    const token = localStorage.getItem("token");
+    if (token && user) {
+      socket.emit("authenticate", token);
+    } else {
+      socket.emit("setDisplayName", userName);
+    }
 
     socket.on("receiveMessage", (msg) => {
       setMessages((prev) => [...prev, msg]);
     });
 
     return () => socket.off("receiveMessage");
-  }, []);
+  }, [user]);
 
   const sendMessage = (e) => {
     e.preventDefault();
     if (message.trim()) {
-      const chatMessage = { name, text: message };
-      socket.emit("sendMessage", chatMessage);
+      socket.emit("sendMessage", { username: name, message });
       setMessage("");
     }
   };
@@ -48,8 +52,11 @@ const ChatPage = () => {
       </p>
       <div className="messages">
         {messages.map((msg, index) => (
-          <p key={index} className="message">
-            <strong>{msg.name}:</strong> {msg.text}
+          <p
+            key={`${msg.username}-${msg.message}-${index}`}
+            className="message"
+          >
+            <strong>{msg.username || "Guest"}:</strong> {msg.message || ""}
           </p>
         ))}
       </div>

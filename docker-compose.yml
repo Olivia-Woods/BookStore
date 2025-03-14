@@ -1,3 +1,4 @@
+version: "3"
 services:
   mongo:
     image: mongo:latest
@@ -9,7 +10,7 @@ services:
       - mongo_data:/data/db
 
   server:
-    build: ./server
+    image: oarw/books-server:latest # 🟢 Pull from Docker Hub
     container_name: books-server
     restart: always
     ports:
@@ -20,21 +21,15 @@ services:
       - MONGO_URI=mongodb://mongo:27017/bookStore
       - PORT=5001
       - JWT_SECRET=your-secret-key
-    volumes:
-      - ./server:/app
-      - /app/node_modules
 
   client:
-    build: ./client
+    image: oarw/books-client:latest # 🟢 Pull from Docker Hub
     container_name: books-client
     restart: always
     ports:
-      - "3000:80"
+      - "80:3000"
     depends_on:
       - server
-    volumes:
-      - ./client:/app
-      - /app/node_modules
 
 volumes:
   mongo_data:

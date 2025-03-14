@@ -34,3 +34,14 @@ coverage/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Ignore node_modules and env files
+node_modules/
+.env
+server/.env
+client/.env
+docker-compose.override.yml
+
+# Ignore build files
+server/dist/
+client/build/

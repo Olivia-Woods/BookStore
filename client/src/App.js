@@ -10,7 +10,7 @@ import ChatPage from "./pages/ChatPage/ChatPage";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import AuthPage from "./pages/AuthPage/AuthPage";
-import "./App.css";
+import "./styles/App.css";
 
 function App() {
   return (

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**Chapter One** is a modern online bookstore that allows users to browse and purchase books while engaging in a **real-time "BookClub" chat**. The platform supports both **guest and authenticated user experiences**, enabling users to check out as guests or create an account for additional features like order history and personalized chat names.
+**Chapter One** is a modern online bookstore that allows users to browse and purchase books while engaging in a **real-time "BookClub" chat**. The platform supports both **guest and authenticated user experiences**, enabling users to check out as guests or create an account for additional features like order history and personalised chat names.
 
 ## Features
 

@@ -10,7 +10,7 @@ services:
       - mongo_data:/data/db
 
   server:
-    image: oarw/books-server:latest # 🟢 Pull from Docker Hub
+    image: oarw/books-server:latest
     container_name: books-server
     restart: always
     ports:
@@ -23,7 +23,7 @@ services:
       - JWT_SECRET=your-secret-key
 
   client:
-    image: oarw/books-client:latest # 🟢 Pull from Docker Hub
+    image: oarw/books-client:latest
     container_name: books-client
     restart: always
     ports:

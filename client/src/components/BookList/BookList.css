@@ -6,6 +6,10 @@
   background-color: #f5eeff !important;
   padding: 20px;
   padding-top: 80px;
+  max-width: 1600px; /* Matches navbar */
+  margin: 0 auto; /* Centers content */
+  padding-top: 80px;
+  border-radius: 12px;
 }
 
 /* Hero Section */

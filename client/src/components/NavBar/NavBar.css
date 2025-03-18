@@ -15,8 +15,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1600px; /* Adjust this to match the book grid */
+  padding: 0 5%; /* Ensures it aligns with content */
+  margin: 0 auto; /* Centers navbar */
 }
 
 .logo-image {

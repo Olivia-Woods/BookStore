@@ -6,8 +6,8 @@
   background-color: #f5eeff !important;
   padding: 20px;
   padding-top: 80px;
-  max-width: 1600px; /* Matches navbar */
-  margin: 0 auto; /* Centers content */
+  max-width: 1600px; /* Matches Navbar: Page Alignment */
+  margin: 0 auto;
   padding-top: 80px;
   border-radius: 12px;
 }
@@ -135,11 +135,11 @@
 }
 
 .footer {
-  background-color: #f5eeff !important; /* Ensures it matches the page background */
+  background-color: #f5eeff !important;
   text-align: center;
   padding: 10px;
   color: #333;
   width: 100%;
   margin-top: auto;
-  border: none; /* Removes any unwanted borders */
+  border: none;
 }

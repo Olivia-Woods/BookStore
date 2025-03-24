@@ -8,9 +8,10 @@
 
 ### **Bookstore Functionality**
 
-- Browse books by category and title.
+- Browse available books.
 - View detailed book descriptions and user reviews.
-- Add books to a cart and proceed to checkout.
+- Add books to a cart with real-time cart updates.
+- Proceed to checkout.
 - Secure payment processing with **Stripe**.
 
 ### **User Authentication**

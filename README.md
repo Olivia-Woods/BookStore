@@ -170,5 +170,5 @@ Pull requests are welcome! To contribute:
 
 ## Contact
 
-👩🏽‍💻 **Developer:** Olivia Woods 2025 
+👩🏽‍💻 **Developer:** Olivia Woods 2025<br>
 GitHub: [github.com/Olivia-Woods]

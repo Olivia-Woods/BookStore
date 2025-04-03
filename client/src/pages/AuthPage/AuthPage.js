@@ -90,7 +90,7 @@ const AuthPage = () => {
         className="toggle-link"
         style={{ color: isLogin ? "#777" : "#777" }}
       >
-        {isLogin ? "New? Sign Up Here!" : "Log In Please!"}
+        {isLogin ? "New? Sign Up Here!" : "Log In!"}
       </p>
     </div>
   );

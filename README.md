@@ -63,8 +63,9 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/chapter-one-bookstore.git
-cd chapter-one-bookstore
+git clone https://github.com/your-username/BookStore.git
+cd BookStore
+cd books
 ```
 
 ### 2. Install Dependencies
